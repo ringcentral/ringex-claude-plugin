@@ -6,8 +6,9 @@
     "name": "Byrne Reese",
     "email": "byrne.reese@ringcentral.com"
   },
-  "homepage": "https://github.com/ringcentral/claude-plugin",
-  "repository": "https://github.com/ringcentral/claude-plugin",
+  "displayName": "RingCentral",
+  "homepage": "https://developers.ringcentral.com/mcp/solutions/claude/",
+  "repository": "https://github.com/ringcentral/ringex-claude-plugin",
   "license": "MIT",
   "icon": ".claude-plugin/icon.png",
   "privacyPolicyUrl": "https://ringcentral.com/privacy",
