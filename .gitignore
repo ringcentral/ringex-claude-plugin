@@ -1,0 +1,70 @@
+# Emacs
+*~
+*.swp
+*.swo
+*#
+.#*
+*.elc
+.emacs.desktop
+.emacs.desktop.lock
+auto-save-list/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Node.js / npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+*.code-workspace
+
+# IDE-specific
+.vim/
+.nvim/
+
+# OS
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.cache/
+
+# Build artifacts
+dist/
+build/
+out/
+*.log
+
+# Dependency directories
+__pycache__/
+*.pyc
+.Python
+env/
+venv/
