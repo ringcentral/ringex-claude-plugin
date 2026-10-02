@@ -10,6 +10,8 @@
   "homepage": "https://developers.ringcentral.com/mcp/solutions/claude/",
   "repository": "https://github.com/ringcentral/ringex-claude-plugin",
   "supportUrl": "https://community.ringcentral.com/claude-chatgpt-mcp-and-ai-assistants-43",
+  "documentationUrl": "https://developers.ringcentral.com/mcp/skills/",
+  "termsOfServiceUrl": "https://ringcentral.com/legal",
   "license": "MIT",
   "icon": ".claude-plugin/icon.png",
   "privacyPolicyUrl": "https://ringcentral.com/privacy",
