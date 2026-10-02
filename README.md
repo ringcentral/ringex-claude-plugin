@@ -9,7 +9,6 @@ This repository contains the RingCentral Claude plugin with the following compon
 ### Plugin Configuration
 - **`.mcp.json`** — MCP server configuration connecting to RingCentral's remote MCP servers for phone and team chat functionality
 - **`.claude-plugin/plugin.json`** — Plugin manifest with metadata, permissions, and configuration
-- **`.claude-plugin/icon.png`** — Plugin icon (512×512 PNG)
 
 ### Skills
 The `skills/` directory contains 17 Claude skills that extend the plugin's capabilities:
