@@ -50,8 +50,8 @@ what mode.
    resolves.
 
 4. **Present candidates as a choice** if more than one call could match:
-      - 2–4 candidates → a structured multiple-choice prompt (the `AskUserQuestion` tool, where
-        available), one option per call, labeled with the resolved name, direction, and time.
+      - 2–4 candidates → a structured multiple-choice control, when the client provides one, with
+        one option per call labeled with the resolved name, direction, and time.
       - More than 4, or exactly one → a plain-text ranked list, or auto-proceed if there's only one
         unambiguous match.
       - No matches → say so and offer to widen the date range rather than guessing.

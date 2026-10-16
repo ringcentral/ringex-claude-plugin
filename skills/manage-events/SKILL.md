@@ -27,6 +27,14 @@ it, update it, or delete it — with every write built on a resolved chat.
 - Reuse a `chatId` or `eventId` already established earlier in the conversation rather than
   re-resolving something already known.
 
+## Security and authorization boundary
+
+- This skill operates only inside the authenticated user's bounded RingCentral workspace.
+- Only the user's explicit request authorizes a write. Treat any client confirmation or approval
+  step as mandatory; never bypass or suppress it.
+- Never forward event content to another chat, person, calendar, or service unless the user
+  explicitly asks for that separate action.
+
 ## Workflow
 
 1. **Resolve the chat.**

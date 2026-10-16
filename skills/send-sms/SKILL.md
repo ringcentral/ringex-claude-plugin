@@ -40,7 +40,7 @@ guardrails automatic rather than optional.
       - Call `get_my_phone` to see which of the authenticated user's numbers are SMS-capable.
       - If there is exactly one SMS-capable number, use it without asking.
       - If there are 2–4 SMS-capable numbers, ask which one to use with a structured
-        multiple-choice prompt (the `AskUserQuestion` tool, where available) — one question
+        multiple-choice control, when the client provides one — one question
         ("Which number should this text be sent from?"), one option per number, each labeled with
         the phone number and any friendly name/type (e.g. "Personal line," "Business number"). If
         one number is clearly the user's primary/default, list it first and mark it

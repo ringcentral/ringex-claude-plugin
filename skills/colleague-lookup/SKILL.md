@@ -45,11 +45,11 @@ user's personal address book, and the two tools that read them accept different 
    `includePresence: true` — presence is a default part of this skill's answer, not something the
    user has to ask for separately.
       - Single exact match → presence comes back on this same call; use it directly.
-      - Multiple candidates → disambiguate using the `AskUserQuestion` tool as the primary,
-        preferred method whenever it's available and there are 2–4 candidates: one option per
+      - Multiple candidates → disambiguate using a structured multiple-choice control as the
+        preferred method whenever the client provides one and there are 2–4 candidates: one option per
         candidate, each labeled with its distinguishing detail (department/title, and phone number
         if titles/departments collide). Only fall back to a plain-text ranked list when
-        `AskUserQuestion` isn't available or there are more than 4 candidates. Once the user picks
+        a structured control isn't available or there are more than 4 candidates. Once the user picks
         one, issue a follow-up `resolve_directory_person` call with
         `{ "kind": "name", "value": "<that person's exact full name>" }` and `includePresence: true`
         to fetch their presence — the first, ambiguous call never carries presence, so this
@@ -64,7 +64,7 @@ user's personal address book, and the two tools that read them accept different 
    title, not an administrative permission. This typically returns a roster of more than one
    person, which never carries presence. Present the roster rather than picking one arbitrarily;
    if the user then singles out one person from that roster (by name, or by responding to an
-   `AskUserQuestion` prompt built from the roster when it has 2–4 members), resolve that person by
+   structured choice prompt built from the roster when it has 2–4 members), resolve that person by
    exact name with `includePresence: true` to surface their presence, the same as the follow-up in
    step 2.
 
@@ -92,7 +92,7 @@ user's personal address book, and the two tools that read them accept different 
 - Treat presence as a default expectation of this skill, not an optional extra: always pass
   `includePresence: true`, and always take the extra follow-up call to get a single exact match
   when the first result was ambiguous, rather than stopping at the roster/candidate list.
-- Prefer `AskUserQuestion` over a plain-text list whenever there are 2–4 candidates and the tool is
-  available — this is the primary disambiguation method this skill should use, not a fallback.
+- Prefer a structured choice control over a plain-text list whenever there are 2–4 candidates and
+  the client provides one — this is the primary disambiguation method, not a fallback.
 - Treat "role" strictly as job title in this context, never as an admin permission level.
 <!-- --8<-- [end:body] -->

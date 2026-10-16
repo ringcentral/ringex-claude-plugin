@@ -1,23 +1,27 @@
-# RingCentral Claude Plugin
+# RingCentral Agent Plugin
 
-A Claude plugin that enables seamless integration with RingCentral's communication platform, allowing users to manage calls, voicemail, SMS, and team chat directly from Claude.
+A portable, client-agnostic plugin that connects users to RingCentral phone and Team Chat capabilities.
 
 ## Contents
 
-This repository contains the RingCentral Claude plugin with the following components:
+This repository contains one RingCentral plugin package with portable metadata, client compatibility metadata, two remote MCP servers, and reusable skills.
 
 ### Plugin Configuration
+- **`plugin.json`** — Portable Agent Plugins manifest
+- **`mcp.json`** — Portable MCP configuration for the two RingCentral remote servers
+- **`.codex-plugin/plugin.json`** — Client compatibility manifest
 - **`.mcp.json`** — MCP server configuration connecting to RingCentral's remote MCP servers for phone and team chat functionality
-- **`.claude-plugin/plugin.json`** — Plugin manifest with metadata, permissions, and configuration
+- **`.claude-plugin/plugin.json`** — Client compatibility manifest
 
 ### Skills
-The `skills/` directory contains 17 Claude skills that extend the plugin's capabilities:
+The `skills/` directory contains 16 reusable skills that extend the plugin's capabilities:
 
 **Communication Skills:**
 - `call-followup-email` — Draft follow-up emails after calls
 - `call-recap` — Summarize and recap call details
 - `voicemail-inbox` — Access and manage voicemail messages
 - `sms-inbox` — View SMS/text message threads
+- `send-sms` — Send a confirmed person-to-person SMS
 - `fax-inbox` — Access received faxes
 
 **Team Chat (Glip) Skills:**
@@ -45,7 +49,7 @@ The `skills/` directory contains 17 Claude skills that extend the plugin's capab
 
 ## Usage
 
-This plugin is designed to work with Claude's plugin system. Install it through the Claude plugin marketplace or developer portal.
+Install or upload the package through any compatible plugin client or directory.
 
 ## Privacy & Security
 

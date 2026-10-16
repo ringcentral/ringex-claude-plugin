@@ -1,0 +1,39 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ringcentral",
+  "version": "0.3.1",
+  "description": "Work with RingCentral phone and Team Chat: review calls, voicemail, SMS, and faxes; find colleagues; and manage messages, tasks, notes, events, teams, webhooks, and Adaptive Cards.",
+  "author": {
+    "name": "Byrne Reese",
+    "email": "byrne.reese@ringcentral.com",
+    "url": "https://developers.ringcentral.com/"
+  },
+  "homepage": "https://developers.ringcentral.com/mcp/skills/",
+  "repository": "https://github.com/ringcentral/ringex-claude-plugin",
+  "license": "MIT",
+  "keywords": ["ringcentral", "ringex", "phone", "team-chat", "glip", "voip", "sms", "voicemail"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "RingCentral",
+        "shortDescription": "Calls, texts, and Team Chat",
+        "longDescription": "Use RingCentral phone and Team Chat from a compatible AI client. Review calls, voicemail, SMS, and faxes; look up colleagues; read or send messages; and manage Team Chat tasks, notes, events, teams, webhooks, and Adaptive Cards. Access is limited to data and actions permitted by the connected RingCentral account.",
+        "developerName": "RingCentral",
+        "category": "Productivity",
+        "capabilities": ["Review calls and messages", "Send SMS and Team Chat messages", "Manage Team Chat content"],
+        "websiteURL": "https://developers.ringcentral.com/mcp/skills/",
+        "supportURL": "https://community.ringcentral.com/",
+        "privacyPolicyURL": "https://ringcentral.com/privacy",
+        "termsOfServiceURL": "https://ringcentral.com/legal",
+        "defaultPrompt": [
+          "Show my recent voicemails and summarize what needs attention.",
+          "Draft a follow-up email for my latest customer call.",
+          "Catch me up on unread Team Chat messages and open tasks."
+        ],
+        "brandColor": "#FF5F00",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      }
+    }
+  }
+}

@@ -45,8 +45,8 @@ metadata and cover-page text. Be upfront about that rather than implying more ac
    number if neither resolves.
 
 3. **Sort and present as a choice.** Sort newest first.
-      - If there are 2–4 recent faxes, use a structured multiple-choice prompt (the
-        `AskUserQuestion` tool, where available): one option per fax, labeled with the resolved
+      - If there are 2–4 recent faxes, use a structured multiple-choice control, when the client
+        provides one: one option per fax, labeled with the resolved
         sender name, with the timestamp (and page count, if the record includes one) as the
         description.
       - If there are more than 4, or fewer than 2 (zero or one), list them as a plain-text ranked

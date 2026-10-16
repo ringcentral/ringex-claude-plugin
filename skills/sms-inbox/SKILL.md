@@ -51,8 +51,8 @@ new message is a different skill (`send-sms`).
    (e.g. "Sarah Kim, Mike Chen"); if there are more than 3 participants, show the first two names
    followed by "+N more".
 4. **Present the conversation list as a choice.**
-      - If there are 2–4 recent conversations, use a structured multiple-choice prompt (the
-        `AskUserQuestion` tool, where available): one option per conversation, labeled with the
+      - If there are 2–4 recent conversations, use a structured multiple-choice control, when the
+        client provides one: one option per conversation, labeled with the
         resolved name(s), with the most recent message snippet and timestamp as the description.
       - If there are more than 4, or fewer than 2 (zero or one), list them as a plain-text ranked
         list instead — a multiple-choice prompt can't show more than 4 options, and a single

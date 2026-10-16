@@ -26,7 +26,7 @@ Focus on what needs attention, not on exhaustively listing every record.
 ## Workflow
 
 1. **Ask how far back to look before pulling any data.** Don't assume a fixed window — the right
-   lookback depends on when the user last checked in. Ask using `AskUserQuestion` if available
+   lookback depends on when the user last checked in. Ask using a structured choice control if the client provides one
    (plain text otherwise), offering:
    - Last 24 hours
    - Last 3 days
