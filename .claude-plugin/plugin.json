@@ -1,20 +1,14 @@
 {
-  "name": "ringcentral",
+  "name": "RingCentral",
   "version": "0.3.1",
-  "description": "Work with your RingCentral phone and Team Chat (Glip) account: check calls, voicemail, SMS, and faxes, look up colleagues, read or post/edit Team Chat messages, and manage Team Chat tasks, notes, events, teams, webhooks, and Adaptive Cards.",
+  "description": "Work with RingCentral phone and Team Chat: review calls, voicemail, SMS, and faxes; find colleagues; and manage messages, tasks, notes, events, teams, webhooks, and Adaptive Cards.",
   "author": {
     "name": "Byrne Reese",
     "email": "byrne.reese@ringcentral.com"
   },
-  "displayName": "RingCentral",
-  "homepage": "https://developers.ringcentral.com/mcp/skills/",
+  "homepage": "https://developers.ringcentral.com/mcp/",
   "repository": "https://github.com/ringcentral/ringex-claude-plugin",
-  "supportUrl": "https://community.ringcentral.com/",
-  "documentationUrl": "https://developers.ringcentral.com/mcp/skills/",
-  "termsOfServiceUrl": "https://ringcentral.com/legal",
   "license": "MIT",
-  "icon": ".claude-plugin/icon.png",
-  "privacyPolicyUrl": "https://ringcentral.com/privacy",
   "keywords": [
     "ringcentral",
     "ringex",
@@ -24,5 +18,12 @@
     "voip",
     "sms",
     "voicemail"
-  ]
+  ],
+  "displayName": "RingCentral",
+  "supportUrl": "https://community.ringcentral.com/",
+  "documentationUrl": "https://developers.ringcentral.com/mcp/skills/",
+  "termsOfServiceUrl": "https://ringcentral.com/legal",
+  "privacyPolicyUrl": "https://ringcentral.com/privacy",
+  "icon": "assets/icon.png",
+  "mcpServers": "./mcp.json"
 }

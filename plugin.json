@@ -1,12 +1,12 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "ringcentral",
+  "name": "RingCentral",
   "version": "0.3.1",
   "description": "Work with RingCentral phone and Team Chat: review calls, voicemail, SMS, and faxes; find colleagues; and manage messages, tasks, notes, events, teams, webhooks, and Adaptive Cards.",
   "author": {
     "name": "Byrne Reese",
     "email": "byrne.reese@ringcentral.com",
-    "url": "https://developers.ringcentral.com/"
+    "url": "https://developers.ringcentral.com/mcp/"
   },
   "homepage": "https://developers.ringcentral.com/mcp/skills/",
   "repository": "https://github.com/ringcentral/ringex-claude-plugin",

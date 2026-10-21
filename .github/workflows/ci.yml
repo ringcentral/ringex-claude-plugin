@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ["v*"]
+
+permissions:
+  contents: write # needed only to attach the ZIP to a release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generated files are up to date
+        run: python3 scripts/sync_manifests.py --check
+
+      - name: Validate repository content
+        run: python3 scripts/check_repo.py
+
+      - name: Validate plugin with Claude Code
+        run: npx --yes @anthropic-ai/claude-code plugin validate .
+
+      - name: Build package ZIP
+        run: python3 scripts/build_package.py
+
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: plugin-package
+          path: dist/*.zip
+
+      - name: Attach package to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip

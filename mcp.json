@@ -3,11 +3,27 @@
   "mcpServers": {
     "phone": {
       "type": "streamable-http",
-      "url": "https://mcp.labs.ringcentral.com/ringex/phone"
+      "url": "https://mcp.labs.ringcentral.com/ringex/phone",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": { "mode": "dcr" }
+          }
+        }
+      }
     },
     "team-chat": {
       "type": "streamable-http",
-      "url": "https://mcp.labs.ringcentral.com/ringex/v1.1.0/team-chat"
+      "url": "https://mcp.labs.ringcentral.com/ringex/team-chat",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": { "mode": "dcr" }
+          }
+        }
+      }
     }
   }
 }
