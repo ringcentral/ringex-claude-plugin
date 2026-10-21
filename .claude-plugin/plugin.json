@@ -1,5 +1,5 @@
 {
-  "name": "RingCentral",
+  "name": "ringcentral",
   "version": "0.3.1",
   "description": "Work with RingCentral phone and Team Chat: review calls, voicemail, SMS, and faxes; find colleagues; and manage messages, tasks, notes, events, teams, webhooks, and Adaptive Cards.",
   "author": {
