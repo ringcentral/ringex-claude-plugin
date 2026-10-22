@@ -23,7 +23,7 @@
         "capabilities": ["Review calls and messages", "Send SMS and Team Chat messages", "Manage Team Chat content"],
         "websiteURL": "https://developers.ringcentral.com/mcp/skills/",
         "supportURL": "https://community.ringcentral.com/",
-        "privacyPolicyURL": "https://ringcentral.com/privacy",
+        "privacyPolicyURL": "https://www.ringcentral.com/privacy",
         "termsOfServiceURL": "https://ringcentral.com/legal",
         "defaultPrompt": [
           "Show my recent voicemails and summarize what needs attention.",

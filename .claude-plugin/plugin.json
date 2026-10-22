@@ -20,5 +20,6 @@
     "voicemail"
   ],
   "displayName": "RingCentral",
+  "privacyPolicyUrl": "https://www.ringcentral.com/privacy",
   "mcpServers": "./.mcp.json"
 }

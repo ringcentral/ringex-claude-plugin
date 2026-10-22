@@ -35,9 +35,12 @@ def build() -> dict:
     # Claude author takes name/email only.
     out["author"] = {k: v for k, v in src["author"].items() if k in ("name", "email")}
     out["displayName"] = iface["displayName"]
-    # Listing-only keys (supportUrl, documentationUrl, termsOfServiceUrl,
-    # privacyPolicyUrl, icon) are intentionally omitted: the submission checker
-    # flags them as UNKNOWN_KEY_CROSS_TOOL. Enter them in the submission form.
+    # privacyPolicyUrl is required for plugins that use a remote MCP server
+    # (PRIVACY_URL_MISSING), so it is sourced from the interface block.
+    out["privacyPolicyUrl"] = iface["privacyPolicyURL"]
+    # Other listing-only keys (supportUrl, documentationUrl, termsOfServiceUrl,
+    # icon) are intentionally omitted: the submission checker flags them as
+    # UNKNOWN_KEY_CROSS_TOOL. Enter them in the submission form.
     out["mcpServers"] = "./.mcp.json"
     return out
 

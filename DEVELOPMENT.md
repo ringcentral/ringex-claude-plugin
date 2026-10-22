@@ -20,7 +20,7 @@ One set of source files produces the package for every supported plugin client. 
 | `plugin-manifest.json` | Single source of truth for name, **version**, description, author, URLs, and listing metadata. Bump the version here only |
 | `mcp-manifest.json` | MCP servers and their OAuth settings (portable format) |
 | `skills/*/SKILL.md` | Skills. Keep them AI-assistant-agnostic: don't name specific models, assistants, or vendors |
-| `assets/icon.png` | Plugin icon |
+| `assets/` | Plugin icon and other static assets |
 | `DEVELOPMENT.md` | This file. Update it whenever the build, generated files, or CI behavior changes |
 | `scripts/`, `.github/workflows/ci.yml` | Build, check, and CI tooling |
 
@@ -55,7 +55,7 @@ To cut a release: bump `version` in `plugin-manifest.json`, run `python3 scripts
 
 Run the same steps locally with the `scripts/` commands above. Generated artifacts and build output (`dist/`) are not committed.
 
-The generated Claude manifest intentionally omits `supportUrl`, `documentationUrl`, `termsOfServiceUrl`, `privacyPolicyUrl`, and `icon`; the submission checker flags them as `UNKNOWN_KEY_CROSS_TOOL`. Provide those values in the directory submission form instead. If a listing ends up missing its icon or links, re-add the keys in `build()` in `scripts/sync_manifests.py`.
+The generated Claude manifest includes `privacyPolicyUrl` (sourced from `privacyPolicyURL` in `plugin-manifest.json`), because the plugin uses a remote MCP server and the submission checker requires it (`PRIVACY_URL_MISSING`). It intentionally omits `supportUrl`, `documentationUrl`, `termsOfServiceUrl`, and `icon`; the submission checker flags them as `UNKNOWN_KEY_CROSS_TOOL`. Provide those values in the directory submission form instead. If a listing ends up missing its icon or links, re-add the keys in `build()` in `scripts/sync_manifests.py`.
 
 ## Clients and manifests
 
