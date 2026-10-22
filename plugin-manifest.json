@@ -31,8 +31,8 @@
           "Catch me up on unread Team Chat messages and open tasks."
         ],
         "brandColor": "#FF5F00",
-        "composerIcon": "./assets/icon.png",
-        "logo": "./assets/icon.png"
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg"
       }
     }
   }
