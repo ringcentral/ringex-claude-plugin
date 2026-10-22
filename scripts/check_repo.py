@@ -3,8 +3,8 @@
 
 Checks:
   - JSON files parse
-  - plugin.json: required fields, semver version, listing field limits
-  - mcp.json: HTTPS URLs, no versioned paths, OAuth auth block present
+  - plugin-manifest.json: required fields, semver version, listing field limits
+  - mcp-manifest.json: HTTPS URLs, no versioned paths, OAuth auth block present
   - skills: each folder has SKILL.md with matching `name` and a `description`
   - no empty directories under skills/
   - no vendor / model names in user-facing text (README, listing metadata, skills)
@@ -32,47 +32,49 @@ def load(rel: str):
 
 
 # ---- JSON + manifests -------------------------------------------------------
-plugin = load("plugin.json")
-mcp = load("mcp.json")
+plugin = load("plugin-manifest.json")
+mcp = load("mcp-manifest.json")
+load(".mcp.json")
 load(".claude-plugin/plugin.json")
 load(".claude-plugin/marketplace.json")
+load(".agents/plugins/marketplace.json")
 
 if plugin:
     for key in ("name", "version", "description", "author", "license"):
         if key not in plugin:
-            fail(f"plugin.json: missing '{key}'")
+            fail(f"plugin-manifest.json: missing '{key}'")
     if not re.fullmatch(r"\d+\.\d+\.\d+", plugin.get("version", "")):
-        fail("plugin.json: version must be semver (x.y.z)")
+        fail("plugin-manifest.json: version must be semver (x.y.z)")
     if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", plugin.get("name", "")) or len(plugin["name"]) > 64:
-        fail("plugin.json: name must be lowercase-hyphenated, <= 64 chars")
+        fail("plugin-manifest.json: name must be lowercase-hyphenated, <= 64 chars")
     iface = plugin.get("extensions", {}).get("com.openai", {}).get("interface", {})
     limits = {"displayName": 30, "shortDescription": 30, "longDescription": 4000}
     for key, limit in limits.items():
         if key not in iface:
-            fail(f"plugin.json: interface.{key} missing")
+            fail(f"plugin-manifest.json: interface.{key} missing")
         elif len(iface[key]) > limit:
-            fail(f"plugin.json: interface.{key} is {len(iface[key])} chars (max {limit})")
+            fail(f"plugin-manifest.json: interface.{key} is {len(iface[key])} chars (max {limit})")
     for key in ("websiteURL", "supportURL", "privacyPolicyURL", "termsOfServiceURL"):
         if not str(iface.get(key, "")).startswith("https://"):
-            fail(f"plugin.json: interface.{key} must be an HTTPS URL")
+            fail(f"plugin-manifest.json: interface.{key} must be an HTTPS URL")
     for key in ("composerIcon", "logo"):
         rel = iface.get(key)
         if not rel or not (ROOT / rel).is_file():
-            fail(f"plugin.json: interface.{key} missing or file not found ({rel})")
+            fail(f"plugin-manifest.json: interface.{key} missing or file not found ({rel})")
 
 if mcp:
     servers = mcp.get("mcpServers", {})
     if not servers:
-        fail("mcp.json: no servers defined")
+        fail("mcp-manifest.json: no servers defined")
     for name, cfg in servers.items():
         url = cfg.get("url", "")
         if not url.startswith("https://"):
-            fail(f"mcp.json: {name}: url must be HTTPS")
+            fail(f"mcp-manifest.json: {name}: url must be HTTPS")
         if re.search(r"/v\d+(\.\d+)*/", url):
-            fail(f"mcp.json: {name}: versioned URL path not allowed ({url})")
+            fail(f"mcp-manifest.json: {name}: versioned URL path not allowed ({url})")
         auth = cfg.get("extensions", {}).get("com.openai", {}).get("auth")
         if not auth or auth.get("type") not in ("oauth", "mixed", "none", "api_key"):
-            fail(f"mcp.json: {name}: missing extensions['com.openai'].auth")
+            fail(f"mcp-manifest.json: {name}: missing extensions['com.openai'].auth")
 
 # ---- Skills -----------------------------------------------------------------
 skills_dir = ROOT / "skills"
@@ -127,7 +129,7 @@ if plugin:
         "keywords": plugin.get("keywords"),
         "interface": plugin.get("extensions", {}).get("com.openai", {}).get("interface"),
     }
-    scan("plugin.json(listing)", json.dumps(listing, indent=1))
+    scan("plugin-manifest.json(listing)", json.dumps(listing, indent=1))
 
 if errors:
     print(f"{len(errors)} problem(s) found:", file=sys.stderr)

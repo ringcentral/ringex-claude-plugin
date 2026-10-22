@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "phone": {
+      "type": "streamable-http",
+      "url": "https://mcp.labs.ringcentral.com/ringex/phone"
+    },
+    "team-chat": {
+      "type": "streamable-http",
+      "url": "https://mcp.labs.ringcentral.com/ringex/team-chat"
+    }
+  }
+}

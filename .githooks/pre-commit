@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Regenerate derived manifests before every commit and stage the results,
+# so generated files can never be committed stale.
+set -euo pipefail
+
+root="$(git rev-parse --show-toplevel)"
+cd "$root"
+
+python3 scripts/sync_manifests.py
+
+git add .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json .agents/plugins/marketplace.json

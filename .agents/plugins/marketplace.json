@@ -1,0 +1,23 @@
+{
+  "name": "ringcentral",
+  "description": "Work with RingCentral phone and Team Chat: review calls, voicemail, SMS, and faxes; find colleagues; and manage messages, tasks, notes, events, teams, webhooks, and Adaptive Cards.",
+  "owner": {
+    "name": "RingCentral",
+    "email": "byrne.reese@ringcentral.com"
+  },
+  "plugins": [
+    {
+      "name": "ringcentral",
+      "source": "./",
+      "description": "Work with RingCentral phone and Team Chat: review calls, voicemail, SMS, and faxes; find colleagues; and manage messages, tasks, notes, events, teams, webhooks, and Adaptive Cards.",
+      "category": "Productivity",
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      }
+    }
+  ],
+  "interface": {
+    "displayName": "RingCentral"
+  }
+}

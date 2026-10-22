@@ -4,8 +4,10 @@
 Output: dist/<name>-<version>.zip, with package files at the ZIP root:
   plugin.json, mcp.json, LICENSE, README.md, assets/, skills/
 
+plugin.json and mcp.json are copies of plugin-manifest.json and
+mcp-manifest.json (the portable format); they exist only inside the ZIP.
 Maintainer-only files (DEVELOPMENT.md, scripts/, .github/, .git, dist/) and
-OS junk (.DS_Store) are never included. The version comes from plugin.json.
+OS junk (.DS_Store) are never included. The version comes from plugin-manifest.json.
 Docs-sync snippet markers are stripped from the packaged SKILL.md files only;
 the files in the repo are not modified.
 """
@@ -16,7 +18,9 @@ import sys
 import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-FILES = ["plugin.json", "mcp.json", "LICENSE", "README.md"]
+FILES = ["LICENSE", "README.md"]
+# Portable (OpenAI) files: source in the repo -> name inside the ZIP.
+GENERATED = {"plugin-manifest.json": "plugin.json", "mcp-manifest.json": "mcp.json"}
 DIRS = ["assets", "skills"]
 SKIP_NAMES = {".DS_Store", "Thumbs.db"}
 
@@ -37,7 +41,7 @@ def package_bytes(path: pathlib.Path) -> bytes:
 
 
 def main() -> int:
-    meta = json.loads((ROOT / "plugin.json").read_text())
+    meta = json.loads((ROOT / "plugin-manifest.json").read_text())
     out_dir = ROOT / "dist"
     out_dir.mkdir(exist_ok=True)
     out = out_dir / f"{meta['name']}-{meta['version']}.zip"
@@ -47,20 +51,25 @@ def main() -> int:
         members += sorted(p for p in (ROOT / d).rglob("*")
                           if p.is_file() and p.name not in SKIP_NAMES)
 
-    missing = [p for p in members if not p.is_file()]
+    missing = [p for p in members + [ROOT / s for s in GENERATED] if not p.is_file()]
     if missing:
         print("missing package files: " + ", ".join(str(m.relative_to(ROOT)) for m in missing),
               file=sys.stderr)
         return 1
 
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zf:
+        for src_name, zip_name in GENERATED.items():
+            info = zipfile.ZipInfo(zip_name, EPOCH)
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            zf.writestr(info, (ROOT / src_name).read_bytes())
         for path in members:
             info = zipfile.ZipInfo(str(path.relative_to(ROOT)), EPOCH)
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
             zf.writestr(info, package_bytes(path))
 
-    print(f"built {out.relative_to(ROOT)} ({len(members)} files)")
+    print(f"built {out.relative_to(ROOT)} ({len(members) + len(GENERATED)} files)")
     return 0
 
 

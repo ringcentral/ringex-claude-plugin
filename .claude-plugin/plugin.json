@@ -20,10 +20,5 @@
     "voicemail"
   ],
   "displayName": "RingCentral",
-  "supportUrl": "https://community.ringcentral.com/",
-  "documentationUrl": "https://developers.ringcentral.com/mcp/skills/",
-  "termsOfServiceUrl": "https://ringcentral.com/legal",
-  "privacyPolicyUrl": "https://ringcentral.com/privacy",
-  "icon": "assets/icon.png",
-  "mcpServers": "./mcp.json"
+  "mcpServers": "./.mcp.json"
 }
